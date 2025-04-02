@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World App</title>
+    <title>AI Search Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .chat-container { width: 400px; margin: auto; border: 1px solid #ccc; padding: 10px; }
+        .chat-box { height: 300px; overflow-y: scroll; border-bottom: 1px solid #ddd; padding: 5px; }
+        .user-message { text-align: right; color: blue; }
+        .bot-message { text-align: left; color: green; }
+        input { width: 80%; padding: 5px; }
+        button { padding: 5px; }
+    </style>
 </head>
 <body>
-    <h1>Hello, SharePoint!</h1>
-    <p>This is a test page to embed inside SharePoint using an iframe.</p>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Ask a question..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const inputBox = document.getElementById('user-input');
+            const chatBox = document.getElementById('chat-box');
+            const userMessage = inputBox.value;
+
+            if (!userMessage) return;
+
+            // Display user message
+            chatBox.innerHTML += `<p class="user-message"><strong>You:</strong> ${userMessage}</p>`;
+            inputBox.value = '';
+
+            // Fetch AI Search results
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: userMessage })
+            });
+
+            const data = await response.json();
+            chatBox.innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${data.response}</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
 </body>
 </html>
