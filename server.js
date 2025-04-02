@@ -34,11 +34,11 @@ app.post('/ask', async (req, res) => {
       // Azure AI Search API request
       const response = await axios.post(
           `${AZURE_SEARCH_ENDPOINT}/indexes/${INDEX_NAME}/docs/search?api-version=2024-07-01`,
-          { search: userQuery, select: "title, content" },
+          { search: userQuery,top:2, select: "title, content" },
           { headers: { 'Content-Type': 'application/json', 'api-key': AZURE_SEARCH_API_KEY } }
       );
 
-      const results = response.data.value.map(item => `${item.title}: ${item.content}\n \n`).join("\n\n");
+      const results = response.data.value.map(item => `${item.content}\n \n`).join("\n\n");
 
       res.json({ response: results || "No relevant results found." });
   } catch (error) {

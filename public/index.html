@@ -8,14 +8,17 @@
         body { font-family: Arial, sans-serif; }
         .chat-container { width: 400px; margin: auto; border: 1px solid #ccc; padding: 10px; }
         .chat-box { height: 300px; overflow-y: scroll; border-bottom: 1px solid #ddd; padding: 5px; }
-        .user-message { text-align: right; color: blue; }
-        .bot-message { text-align: left; color: green; }
+        .user-message { text-align: right; color: rgb(126, 39, 184); }
+        .bot-message { text-align: left; color: rgb(8, 8, 8); }
         input { width: 80%; padding: 5px; }
         button { padding: 5px; }
     </style>
 </head>
 <body>
+  
     <div class="chat-container">
+        <h3>ITKB Chatbot</h3>
+        <h4>Ask your queries here!</h4>
         <div class="chat-box" id="chat-box"></div>
         <input type="text" id="user-input" placeholder="Ask a question..." />
         <button onclick="sendMessage()">Send</button>
