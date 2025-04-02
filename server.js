@@ -39,7 +39,7 @@ app.post('/ask', async (req, res) => {
       );
 
       // const results = response.data.value.map(item => `${item.content}\n \n`).join("\n\n");
-      const results = response.data.value[0].["@search.captions"][0].text;
+      const results = response.data.value[0]["@search.captions"][0].text;
 
       res.json({ response: results || "No relevant results found." });
   } catch (error) {
