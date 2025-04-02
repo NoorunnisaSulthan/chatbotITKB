@@ -39,7 +39,6 @@ app.post('/ask', async (req, res) => {
       );
 
       const results = response.data.value.map(item => 
-        ` **Result ${index + 1}:**\n` +
         `**Title:** ${item.title}\n` +
         `**Content:**\n${item.content}\n\n` +
         "-------------------------------\n"
