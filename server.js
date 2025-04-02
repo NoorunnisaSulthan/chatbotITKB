@@ -33,7 +33,7 @@ app.post('/ask', async (req, res) => {
 
       // Azure AI Search API request
       const response = await axios.post(
-          `${AZURE_SEARCH_ENDPOINT}/indexes/${INDEX_NAME}/docs/search?api-version=2023-07-01-preview`,
+          `${AZURE_SEARCH_ENDPOINT}/indexes/${INDEX_NAME}/docs/search?api-version=2024-07-01`,
           { search: userQuery, top: 2, select: "title, summary" },
           { headers: { 'Content-Type': 'application/json', 'api-key': AZURE_SEARCH_API_KEY } }
       );
