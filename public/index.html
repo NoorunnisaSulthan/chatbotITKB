@@ -17,8 +17,6 @@
 <body>
   
     <div class="chat-container">
-        <h3>ITKB Chatbot</h3>
-        <h4>Ask your queries here!</h4>
         <div class="chat-box" id="chat-box"></div>
         <input type="text" id="user-input" placeholder="Ask a question..." />
         <button onclick="sendMessage()">Send</button>
@@ -36,7 +34,7 @@
             chatBox.innerHTML += `<p class="user-message"><strong>You:</strong> ${userMessage}</p>`;
             inputBox.value = '';
 
-            // Fetch AI Search results
+            // Fetch AI Search results and display
             const response = await fetch('/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
