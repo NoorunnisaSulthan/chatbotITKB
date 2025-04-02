@@ -1,4 +1,5 @@
 const express = require("express");
+<<<<<<< HEAD
 
 
 const axios = require('axios');
@@ -39,6 +40,12 @@ app.post('/ask', async (req, res) => {
 
 
 
+=======
+const app = express();
+
+app.use(express.static("public")); // Serve static files from 'public' folder
+
+>>>>>>> 9d09d964bf68d30df3b855a8de27a335be1de3d7
 // Middleware to allow embedding in an iframe
 app.use((req, res, next) => {
     res.setHeader("X-Frame-Options", "ALLOWALL"); // Allows embedding
