@@ -38,12 +38,8 @@ app.post('/ask', async (req, res) => {
           { headers: { 'Content-Type': 'application/json', 'api-key': AZURE_SEARCH_API_KEY } }
       );
 
-      const results = response.data.value.map(item => 
-        `**Title:** ${item.title}\n` +
-        `**Content:**\n${item.content}\n\n` +
-        "-------------------------------\n"
-    ).join("");
-    
+      const results = response.data.value.map(item => `${item.title}: ${item.content}\n \n`).join("\n\n");
+
       res.json({ response: results || "No relevant results found." });
   } catch (error) {
       console.error("Error fetching data:", error);
