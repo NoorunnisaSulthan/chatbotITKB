@@ -38,9 +38,7 @@ app.post('/ask', async (req, res) => {
           { headers: { 'Content-Type': 'application/json', 'api-key': AZURE_SEARCH_API_KEY } }
       );
 
-      const results = response.data["@search.answers"]
-      ? response.data["@search.answers"][0].text + "\n\n"
-      : response.data.value.map(item => `${item.content}\n\n`).join("\n\n");
+      const results = response.data["@search.answers"][0].text + "\n\n"
   
 
       res.json({ response: results || "No relevant results found." });
