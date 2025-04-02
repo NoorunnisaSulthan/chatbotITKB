@@ -9,12 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^1.8.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-=======
->>>>>>> 9d09d964bf68d30df3b855a8de27a335be1de3d7
     "express": "^4.21.2"
   }
 }

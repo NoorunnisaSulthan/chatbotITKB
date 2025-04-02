@@ -1,5 +1,4 @@
 const express = require("express");
-<<<<<<< HEAD
 
 
 const axios = require('axios');
@@ -16,6 +15,17 @@ app.use(express.static("public")); // Serve static files from 'public' folder
 const AZURE_SEARCH_ENDPOINT = process.env.AZURE_SEARCH_ENDPOINT;
 const AZURE_SEARCH_API_KEY = process.env.AZURE_SEARCH_API_KEY;
 const INDEX_NAME = process.env.INDEX_NAME;
+
+// Middleware to allow embedding in an iframe
+app.use((req, res, next) => {
+  res.setHeader("X-Frame-Options", "ALLOWALL"); // Allows embedding
+  res.setHeader(
+    "Content-Security-Policy",
+    "frame-ancestors 'self' sharepoint.com *.sharepoint.com"
+  );
+  next();
+});
+
 
 app.post('/ask', async (req, res) => {
   try {
@@ -40,22 +50,10 @@ app.post('/ask', async (req, res) => {
 
 
 
-=======
-const app = express();
 
-app.use(express.static("public")); // Serve static files from 'public' folder
 
->>>>>>> 9d09d964bf68d30df3b855a8de27a335be1de3d7
-// Middleware to allow embedding in an iframe
-app.use((req, res, next) => {
-    res.setHeader("X-Frame-Options", "ALLOWALL"); // Allows embedding
-    res.setHeader(
-      "Content-Security-Policy",
-      "frame-ancestors 'self' sharepoint.com *.sharepoint.com"
-    );
-    next();
-  });
-  
+
+
   
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
